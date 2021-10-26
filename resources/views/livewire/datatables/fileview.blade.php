@@ -1,0 +1,1 @@
+<a href="{{asset("/storage/files/".$sertifikat_path)}}" target="_blank"><i class="fas fa-file-alt" style="font-size: 2em;"></i></a>
