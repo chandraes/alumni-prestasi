@@ -1,5 +1,5 @@
 <x-slot name="section-body">
-    tes
+    Alumni notif
 </x-slot>
 <div class="min-w-screen min-h-screen bg-gray-50 flex items-center justify-center py-5">
     <div class="w-full bg-white border-t border-b border-gray-200 px-5 py-16 md:py-24 text-gray-800 font-light">
@@ -20,7 +20,7 @@
                     <div>
                         <a href="{{route('alumni')}}" class="block text-center w-full bg-purple-500 hover:bg-purple-700 focus:bg-purple-700 transition-colors text-white rounded-lg px-3 py-2 font-semibold">Kembali</a>
                     </div>
-              
+
             </div>
             </div>
         </div>

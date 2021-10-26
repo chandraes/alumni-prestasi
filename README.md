@@ -33,8 +33,3 @@ $ php artisan key:generate
 # laravel migrate
 $ php artisan migrate
 ```
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 097a9ba7df2153378b34d0bb9376bc2bbfcf5072

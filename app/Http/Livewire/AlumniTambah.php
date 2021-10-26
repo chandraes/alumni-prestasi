@@ -9,8 +9,8 @@ use App\Models\Penghasilan;
 
 class AlumniTambah extends Component
 {
-    public $nama, $jurusan, $jurusan_prodi_id, $angkatan, $bulan_wisuda, $tahun_wisuda, $sudah_bekerja, $tempat_bekerja_pertama, 
-            $gaji_pertama,$tempat_bekerja_sekarang, $posisi_bagian, $status, $no_hp, $alamat;
+    public $nama, $jurusan, $jurusan_prodi_id, $angkatan, $bulan_wisuda, $tahun_wisuda, $tempat_bekerja_pertama,
+            $gaji_pertama,$tempat_bekerja_sekarang, $posisi_bagian, $status, $no_hp, $alamat, $no_ijazah, $alamat_kantor, $website_kantor;
     public $selectedStatus= null;
     public $captcha = 0;
 
@@ -22,11 +22,13 @@ class AlumniTambah extends Component
         'angkatan' => 'required|numeric',
         'bulan_wisuda' => 'required|numeric',
         'tahun_wisuda' => 'required|numeric',
-        'sudah_bekerja' => 'required|numeric',
-        'tempat_bekerja_pertama' => 'requiredIf:sudah_bekerja,1',
-        'gaji_pertama' => 'requiredIf:sudah_bekerja,1|numeric',
-        'tempat_bekerja_sekarang' => 'requiredIf:sudah_bekerja,1',
-        'posisi_bagian' => 'requiredIf:sudah_bekerja,1',
+        'no_ijazah' => 'required',
+        'status' => 'required|numeric',
+        'tempat_bekerja_pertama' => 'requiredIf:status,1',
+        'gaji_pertama' => 'requiredIf:status,1',
+        'tempat_bekerja_sekarang' => 'requiredIf:status,1',
+        'posisi_bagian' => 'requiredIf:status,1',
+        'alamat_kantor' => 'requiredIf:status,1',
     ];
 
     public function updated($propertyName)
@@ -53,7 +55,7 @@ class AlumniTambah extends Component
         $month = array_to_object($bulan);
 
         $penghasilan = Penghasilan::all();
-        
+
         return view('alumni-tambah', compact('month', 'penghasilan'))
                 ->layout('layouts.guest');
     }
@@ -69,7 +71,7 @@ class AlumniTambah extends Component
             return session()->flash('success', 'Google thinks you are a bot, please refresh and try again');
         }
     }
-    
+
     public function store()
     {
         $input = $this->validate();

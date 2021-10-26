@@ -15,11 +15,15 @@ class Alumni extends Model
         'angkatan',
         'bulan_wisuda',
         'tahun_wisuda',
-        'sudah_bekerja',
+        'no_ijazah',
+        'status',
         'tempat_bekerja_pertama',
         'gaji_pertama',
         'tempat_bekerja_sekarang',
         'posisi_bagian',
+        'tanggal_masuk_kerja',
+        'alamat_kantor',
+        'website_kantor',
         'alamat',
         'no_hp'
     ];

@@ -16,15 +16,21 @@ class CreateAlumnisTable extends Migration
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->text('alamat');
+            $table->string('no_hp');
             $table->foreignId('jurusan_prodi_id')->constrained('jurusan_prodis');
             $table->integer('angkatan');
             $table->integer('bulan_wisuda');
             $table->integer('tahun_wisuda');
-            $table->boolean('sudah_bekerja');
+            $table->string('no_ijazah');
+            $table->tinyInteger('status');
             $table->string('tempat_bekerja_pertama')->nullable();
             $table->bigInteger('gaji_pertama')->nullable();
             $table->string('tempat_bekerja_sekarang')->nullable();
             $table->string('posisi_bagian')->nullable();
+            $table->text('alamat_kantor')->nullable();
+            $table->text('website_kantor')->nullable();
+            $table->date('tanggal_masuk_kerja')->nullable();
             $table->timestamps();
         });
     }
