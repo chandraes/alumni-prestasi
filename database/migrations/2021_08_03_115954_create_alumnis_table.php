@@ -25,7 +25,7 @@ class CreateAlumnisTable extends Migration
             $table->string('no_ijazah');
             $table->tinyInteger('status');
             $table->string('tempat_bekerja_pertama')->nullable();
-            $table->bigInteger('gaji_pertama')->nullable();
+            $table->foreignId('penghasilan_pertama_id')->nullable()->constrained('penghasilan');
             $table->string('tempat_bekerja_sekarang')->nullable();
             $table->string('posisi_bagian')->nullable();
             $table->text('alamat_kantor')->nullable();

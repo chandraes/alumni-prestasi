@@ -11,6 +11,8 @@ class Alumni extends Model
 
     protected $fillable = [
         'nama',
+        'alamat',
+        'no_hp',
         'jurusan_prodi_id',
         'angkatan',
         'bulan_wisuda',
@@ -18,14 +20,13 @@ class Alumni extends Model
         'no_ijazah',
         'status',
         'tempat_bekerja_pertama',
-        'gaji_pertama',
+        'penghasilan_pertama_id',
         'tempat_bekerja_sekarang',
         'posisi_bagian',
         'tanggal_masuk_kerja',
         'alamat_kantor',
         'website_kantor',
-        'alamat',
-        'no_hp'
+
     ];
 
     public function jurusan_prodi()

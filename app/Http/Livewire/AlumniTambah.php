@@ -10,7 +10,7 @@ use App\Models\Penghasilan;
 class AlumniTambah extends Component
 {
     public $nama, $jurusan, $jurusan_prodi_id, $angkatan, $bulan_wisuda, $tahun_wisuda, $tempat_bekerja_pertama,
-            $gaji_pertama,$tempat_bekerja_sekarang, $posisi_bagian, $status, $no_hp, $alamat, $no_ijazah, $alamat_kantor, $website_kantor;
+            $penghasilan_pertama_id, $tempat_bekerja_sekarang, $posisi_bagian, $status, $no_hp, $alamat, $no_ijazah, $alamat_kantor, $website_kantor;
     public $selectedStatus= null;
     public $captcha = 0;
 
@@ -25,7 +25,7 @@ class AlumniTambah extends Component
         'no_ijazah' => 'required',
         'status' => 'required|numeric',
         'tempat_bekerja_pertama' => 'requiredIf:status,1',
-        'gaji_pertama' => 'requiredIf:status,1',
+        'penghasilan_pertama_id' => 'requiredIf:status,1',
         'tempat_bekerja_sekarang' => 'requiredIf:status,1',
         'posisi_bagian' => 'requiredIf:status,1',
         'alamat_kantor' => 'requiredIf:status,1',
