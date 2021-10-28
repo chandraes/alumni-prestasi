@@ -13,6 +13,7 @@ class AlumniTambah extends Component
             $penghasilan_pertama_id, $tempat_bekerja_sekarang, $posisi_bagian, $status, $no_hp, $alamat, $no_ijazah, $alamat_kantor, $website_kantor;
     public $selectedStatus= null;
     public $captcha = 0;
+    public $kesesuaian_bidang, $ipk;
 
     protected $rules = [
         'nama' => 'required|string',
@@ -23,12 +24,15 @@ class AlumniTambah extends Component
         'bulan_wisuda' => 'required|numeric',
         'tahun_wisuda' => 'required|numeric',
         'no_ijazah' => 'required',
+        'ipk' => 'required|max:4|numeric',
         'status' => 'required|numeric',
         'tempat_bekerja_pertama' => 'requiredIf:status,1',
         'penghasilan_pertama_id' => 'requiredIf:status,1',
         'tempat_bekerja_sekarang' => 'requiredIf:status,1',
         'posisi_bagian' => 'requiredIf:status,1',
         'alamat_kantor' => 'requiredIf:status,1',
+        'website_kantor' => 'requiredIf:status,1',
+        'kesesuaian_bidang' => 'requiredIf:status,1',
     ];
 
     public function updated($propertyName)

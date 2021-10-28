@@ -18,6 +18,7 @@ class Alumni extends Model
         'bulan_wisuda',
         'tahun_wisuda',
         'no_ijazah',
+        'ipk',
         'status',
         'tempat_bekerja_pertama',
         'penghasilan_pertama_id',
@@ -26,11 +27,17 @@ class Alumni extends Model
         'tanggal_masuk_kerja',
         'alamat_kantor',
         'website_kantor',
+        'kesesuaian_bidang',
 
     ];
 
-    public function jurusan_prodi()
+    public function jurusan()
     {
-        return $this->hasOne(JurusanProdi::class);
+        return $this->hasOne(JurusanProdi::class, 'id', 'jurusan_prodi_id');
+    }
+
+    public function penghasilan()
+    {
+        return $this->hasOne(Penghasilan::class, 'id', 'penghasilan_pertama_id');
     }
 }

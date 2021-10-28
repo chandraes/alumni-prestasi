@@ -38,7 +38,7 @@
                         <x-jet-input-error for="alamat" class="mt-2" />
                     </div>
                 </div>
-                <div class="mb-2 py-1">
+                <div class="my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Jurusan')}}"></x-jet-label>
                         <select wire:model="jurusan_prodi_id" id="jurusan_prodi_id" name="jurusan_prodi_id"
@@ -59,7 +59,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="w-full sm:w-1/2 py-1">
+                <div class="w-full mt-2 sm:w-1/2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Angkatan Masuk')}}"></x-jet-label>
                         <input wire:model="angkatan" placeholder="   Masukan tahun angkatan anda" type="text"
@@ -72,7 +72,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="w-full py-1 flex space-x-2">
+                <div class="w-full py-1 mt-2 flex space-x-2">
                     <div class="sm:w1/2 w-full relative flex-1 ">
                         <x-jet-label value="{{__('Bulan Wisuda')}}"></x-jet-label>
                         <!-- <span class="absolute p-1 bottom-8 ml-2 bg-white text-gray-800 focus:text-black">{{ __('Bulan Wisuda') }}</span> -->
@@ -101,6 +101,15 @@
                             <span class="absolute text-sm text-red-600">{{ $message }}</span>
                         </div>
                         @enderror
+                    </div>
+                </div>
+                <div>
+                    <div class="mt-3 relative">
+                        <x-jet-label value="{{__('IPK')}}"></x-jet-label>
+                        <input wire:model="ipk" placeholder="Contoh (3.03)" type="text" name="ipk"
+                            id="ipk"
+                            class="@error('ipk') border-red-600 @enderror h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600"></input>
+                        <x-jet-input-error for="ipk" class="mt-2" />
                     </div>
                 </div>
                 <div>
@@ -140,7 +149,7 @@
                     @enderror
                 </div>
                 @if ($status == 1)
-                <div class="w-full mt-2 py-1">
+                <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Tempat Kerja Pertama')}}"></x-jet-label>
                         <input wire:model="tempat_bekerja_pertama" placeholder="  Kosongkan bila belum bekerja"
@@ -150,7 +159,7 @@
                         <x-jet-input-error for="tempat_bekerja_pertama"></x-jet-input-error>
                     </div>
                 </div>
-                <div class="w-full mt-2 py-1">
+                <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Gaji Pertama')}}"></x-jet-label>
                         <select wire:model="penghasilan_pertama_id" name="penghasilan_pertama_id"
@@ -164,7 +173,7 @@
                         <x-jet-input-error for="gaji_pertama"></x-jet-input-error>
                     </div>
                 </div>
-                <div class="w-full mt-2 pb-1">
+                <div class="w-full my-2 pb-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Tempat Bekerja Sekarang')}}"></x-jet-label>
                         <input wire:model="tempat_bekerja_sekarang" placeholder="  Kosongkan bila belum bekerja"
@@ -174,7 +183,7 @@
                         <x-jet-input-error for="tempat_bekerja_sekarang"></x-jet-input-error>
                     </div>
                 </div>
-                <div class="w-full mt-2 py-1">
+                <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Posisi / Jabatan')}}"></x-jet-label>
                         <input wire:model="posisi_bagian" placeholder="  Kosongkan bila belum bekerja" type="text"
@@ -183,7 +192,7 @@
                         <x-jet-input-error for="posisi_bagian"></x-jet-input-error>
                     </div>
                 </div>
-                <div class="py-1">
+                <div class="my-2 py-1">
                     <div class="mt-3 relative">
                         <x-jet-label value="{{__('Alamat Kantor')}}"></x-jet-label>
                         <textarea wire:model="alamat_kantor" placeholder="Masukan alamat kantor anda" rows="6"
@@ -192,7 +201,7 @@
                         <x-jet-input-error for="alamat_kantor" class="mt-2" />
                     </div>
                 </div>
-                <div class="w-full mt-2 py-1">
+                <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Website Kantor')}}"></x-jet-label>
                         <input wire:model="website_kantor" placeholder="  Kosongkan bila belum bekerja" type="url"
@@ -201,25 +210,24 @@
                         <x-jet-input-error for="website_kantor"></x-jet-input-error>
                     </div>
                 </div>
-                <div class="w-full mt-2 py-1">
+                <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Survey Kesesuaian Bidang Pekerjaan')}}"></x-jet-label>
-                        <div class="">
-                            <label for="survey" class="w-1/6">Tidak Sesuai</label>
-                            <input wire:model="website_kantor" list="bidang"
-                                placeholder="  Kosongkan bila belum bekerja" type="range" min="1" max="5"
-                                name="website_kantor" id="survey"
-                                class="@error('website_kantor') border-red-600 @enderror pt-5 h-12 px-2 w-4/6 border-2 rounded focus:outline-none focus:border-purple-600"></input>
-                            <datalist id="bidang">
-                                <option value="1" label="1"></option>
-                                <option value="2"></option>
-                                <option value="3"></option>
-                                <option value="4"></option>
-                                <option value="5" label="5"></option>
-                            </datalist>
-                            <label for="survey" class="w-1/6">Sangat Sesuai</label>
+                        <span class="text-gray-600 text-xs">(1 untuk Tidak Sesuai dan 5 untuk Sangat Sesuai)</span>
+                        <div class="px-6 w-full">
+                            <div class="mt-3">
+                                <input wire:model.prevent="kesesuaian_bidang" type="range" class="w-full h-2 rounded-full relative" min="1" max="5"></input>
+                                {{-- <span class="bg-purple-500 h-2 absolute left-0 top-0 rounded-full" style="width: 50%"></span> --}}
+                            </div>
+                            <div class="flex justify-between mt-2 text-xs text-gray-600">
+                                <span class="w-8 text-left pl-1">1</span>
+                                <span class="w-8 text-center pr-2">2</span>
+                                <span class="w-8 text-center">3</span>
+                                <span class="w-8 text-center pl-2">4</span>
+                                <span class="w-8 text-right pr-1">5</span>
+                            </div>
                         </div>
-                        <x-jet-input-error for="website_kantor"></x-jet-input-error>
+                        <x-jet-input-error for="kesesuaian_bidang"></x-jet-input-error>
                     </div>
                 </div>
                 @endif

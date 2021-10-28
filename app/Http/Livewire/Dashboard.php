@@ -16,11 +16,11 @@ class Dashboard extends Component
     {
         $this->prestasi = MahasiswaPrestasi::count();
         $this->alumnis = Alumni::count();
-        $alumni = Alumni::groupBy('angkatan')->select('angkatan', DB::raw('count(*) as total, sum(sudah_bekerja = 1) as bekerja'))->get();
+        $alumni = Alumni::groupBy('angkatan')->select('angkatan', DB::raw('count(*) as total, sum(status = 1) as bekerja'))->get();
         $alumniJurusan = Alumni::join('jurusan_prodis', 'alumnis.jurusan_prodi_id', 'jurusan_prodis.id')
-                                ->select(DB::raw('concat(nama_jurusan_prodi, " (", jenjang, ")") as prodi'), DB::raw('count(*) as totalAlumni, sum(sudah_bekerja = 1) as bekerja'))
+                                ->select(DB::raw('concat(nama_jurusan_prodi, " (", jenjang, ")") as prodi'), DB::raw('count(*) as totalAlumni, sum(status = 1) as bekerja'))
                                 ->groupBy('prodi')->get();
-        
+
         foreach ($alumniJurusan as $prodi) {
             $this->labelJurusan[] = $prodi->prodi;
             $this->jumlahJurusan[] = $prodi->totalAlumni;
@@ -31,7 +31,7 @@ class Dashboard extends Component
             $this->jumlahAngkatan[] = $key->total;
             $this->sudahBekerja[] = $key->bekerja;
         }
-        
+
         $lblJurusan = json_encode($this->labelJurusan, JSON_NUMERIC_CHECK);
         $jmlJurusan = json_encode($this->jumlahJurusan);
         $bkj = json_encode($this->bekerja, JSON_NUMERIC_CHECK);
@@ -39,7 +39,7 @@ class Dashboard extends Component
         $jmlAngkatan = json_encode($this->jumlahAngkatan, JSON_NUMERIC_CHECK);
         $sdhBkj = json_encode($this->sudahBekerja, JSON_NUMERIC_CHECK);
 
-        
+
 
         return view('livewire.dashboard', compact('lblJurusan', 'jmlJurusan', 'bkj', 'lblAngkatan', 'jmlAngkatan', 'sdhBkj'));
     }

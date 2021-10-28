@@ -17,7 +17,7 @@ class JurusanProdiTable extends LivewireDatatable
     public function columns()
     {
         return [
-            Column::name('feeder_id')->label('Feeder ID')->editable(),
+            // Column::name('feeder_id')->label('Feeder ID')->editable(),  
             Column::name('kode')->label('Kode Jurusan / Prodi')->alignCenter()->editable(),
             Column::name('nama_jurusan_prodi')->label('Nama Jurusan / Prodi')->filterable()->editable(),
             Column::name('jenjang')->alignCenter()->filterable()->editable(),
@@ -33,5 +33,5 @@ class JurusanProdiTable extends LivewireDatatable
         session()->flash('message', 'Data Has Been Deleted..');
    }
 
-   
+
 }
