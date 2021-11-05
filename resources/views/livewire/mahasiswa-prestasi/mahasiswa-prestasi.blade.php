@@ -149,7 +149,7 @@
                                                 <div class="bg-indigo-900 text-xs leading-none py-1 text-center rounded-md text-white" :style="`width: ${progress}%`">
                                                 </div>
                                             </div>
-                                            
+
                                             <x-jet-input-error for="surat_tugas" class="mt-2" />
                                         </div>
                                     </div>
@@ -164,7 +164,7 @@
                                             <x-jet-input-error for="bukti" class="mt-2" />
                                         </div>
                                     </div>
-                                 
+
                                 </div>
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

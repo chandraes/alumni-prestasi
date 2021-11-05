@@ -6,6 +6,7 @@ use App\Models\Alumni;
 use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 use Mediconesystems\LivewireDatatables\NumberColumn;
+use Mediconesystems\LivewireDatatables\BooleanColumn;
 
 
 class AlumniTable extends LivewireDatatable
@@ -16,11 +17,12 @@ class AlumniTable extends LivewireDatatable
 
     public function builder()
     {
-        return Alumni::with('jurusan', 'penghasilan');
+        return Alumni::with('jurusan', 'penghasilan', 'status');
     }
     public function columns()
     {
         return [
+            BooleanColumn::name('verified')->filterable()->alignCenter(),
             Column::name('nama')->searchable(),
             Column::name('no_hp')->label('No HP'),
             Column::name('alamat')->truncate(8),
@@ -38,13 +40,13 @@ class AlumniTable extends LivewireDatatable
                 return $nama_bulan;
             })->alignCenter()->label("Bulan Wisuda")->filterable([1,2,3,4,5,6,7,8,9,10,11,12]),
             NumberColumn::name('tahun_wisuda')->alignCenter()->searchable()->filterable(),
-            Column::callback('status', function($sudah_bekerja){
-                $status = $sudah_bekerja ? 'Sudah' : 'Belum';
-                return $status;
-            })->alignCenter()->label('Status')->searchable()->filterable(['1', '0']),
+            Column::name('no_ijazah')->alignCenter(),
+            Column::name('status.nama_status')->alignCenter()->label('Status')->searchable(),
             Column::name('tempat_bekerja_pertama'),
             Column::name('penghasilan.nama_penghasilan')->label('Gaji Pertama'),
             Column::name('tempat_bekerja_sekarang'),
+            Column::name('alamat_kantor'),
+            Column::name('website_kantor'),
             Column::name('posisi_bagian')->label('Posisi / Bagian'),
             Column::callback('id', function($id){
                 return view('livewire.datatables.delete', ['value' =>$id]);

@@ -19,7 +19,7 @@ class Alumni extends Model
         'tahun_wisuda',
         'no_ijazah',
         'ipk',
-        'status',
+        'status_id',
         'tempat_bekerja_pertama',
         'penghasilan_pertama_id',
         'tempat_bekerja_sekarang',
@@ -27,6 +27,7 @@ class Alumni extends Model
         'tanggal_masuk_kerja',
         'alamat_kantor',
         'website_kantor',
+        'masa_tunggu_id',
         'kesesuaian_bidang',
 
     ];
@@ -39,5 +40,15 @@ class Alumni extends Model
     public function penghasilan()
     {
         return $this->hasOne(Penghasilan::class, 'id', 'penghasilan_pertama_id');
+    }
+
+    public function masa_tunggu()
+    {
+        return $this->hasOne(MasaTungguKerja::class, 'id', 'masa_tunggu_id');
+    }
+
+    public function status()
+    {
+        return $this->hasOne(Status::class, 'id', 'status_id');
     }
 }

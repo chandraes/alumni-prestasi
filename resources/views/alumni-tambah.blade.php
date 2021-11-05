@@ -23,7 +23,7 @@
                 <div>
                     <div class="mt-3 relative">
                         <x-jet-label value="{{__('Nomor Handphone')}}"></x-jet-label>
-                        <input wire:model="no_hp" placeholder="   Masukan nomor handphone anda" type="text" name="no_hp"
+                        <input wire:model="no_hp" placeholder="Contoh (0852123123123)" type="text" name="no_hp"
                             :value="old('no_hp')" id="no_hp"
                             class="@error('no_hp') border-red-600 @enderror h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600"></input>
                         <x-jet-input-error for="no_hp" class="mt-2" />
@@ -106,6 +106,7 @@
                 <div>
                     <div class="mt-3 relative">
                         <x-jet-label value="{{__('IPK')}}"></x-jet-label>
+                        <span class="text-gray-600 text-xs">Gunakan Titik (3.80)</span>
                         <input wire:model="ipk" placeholder="Contoh (3.03)" type="text" name="ipk"
                             id="ipk"
                             class="@error('ipk') border-red-600 @enderror h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600"></input>
@@ -124,31 +125,31 @@
                 <div class="mb-4 mt-3 w-full sm:w-full py-1 ">
                     <x-jet-label value="{{__('Status')}}"></x-jet-label>
                     <!-- <span class="p-1 bottom-8 ml-2 bg-white text-gray-800 focus:text-black">{{ __('Status Bekerja') }}</span> -->
-                    <div class="mt-2 px-3 flex @error('status') border-red-600 @enderror">
+                    <div class="mt-2 px-3 flex @error('status_id') border-red-600 @enderror">
                         <label class="inline-flex items-center">
                             <!-- <x-jet-input autofocus  type="radio" name="sudah_bekerja" :value="old('sudah_bekerja')" id="sudah_bekerja" class=" h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600"></x-jet-input> -->
-                            <input id="bekerja" wire:model.prevent="status" type="radio" class="form-radio"
-                                name="status" value="1">
+                            <input id="bekerja" wire:model.prevent="status_id" type="radio" class="form-radio"
+                                name="status_id" value="1">
                             <span class="ml-2">Sudah Bekerja</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input wire:model.prevent="status" id="belum_bekerja" type="radio" class="form-radio"
-                                name="status" value="0">
+                            <input wire:model.prevent="status_id" id="belum_bekerja" type="radio" class="form-radio"
+                                name="status_id" value="2">
                             <span class="ml-2">Belum Bekerja</span>
                         </label>
                         <label class="inline-flex items-center ml-6">
-                            <input wire:model.prevent="status" id="lanjut_kuliah" type="radio" class="form-radio"
-                                name="status" value="2">
+                            <input wire:model.prevent="status_id" id="lanjut_kuliah" type="radio" class="form-radio"
+                                name="status_id" value="3">
                             <span class="ml-2">Lanjut Kuliah</span>
                         </label>
                     </div>
-                    @error('status')
+                    @error('status_id')
                     <div class="mt-1">
                         <span class="absolute text-sm text-red-600">{{ $message }}</span>
                     </div>
                     @enderror
                 </div>
-                @if ($status == 1)
+                @if ($status_id == 1)
                 <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Tempat Kerja Pertama')}}"></x-jet-label>
@@ -208,6 +209,20 @@
                             name="website_kantor" :value="old('website_kantor')" id="website_kantor"
                             class="@error('website_kantor') border-red-600 @enderror h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600"></input>
                         <x-jet-input-error for="website_kantor"></x-jet-input-error>
+                    </div>
+                </div>
+                <div class="w-full my-2 py-1">
+                    <div class="relative">
+                        <x-jet-label value="{{__('Masa Tunggu Kerja')}}"></x-jet-label>
+                        <select wire:model="masa_tunggu_id" name="masa_tunggu_id"
+                            id="masa_tunggu_id"
+                            class="@error('masa_tunggu_id') border-red-600 @enderror h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600">
+                            <option value="">-- CHOOSE --</option>
+                            @foreach ($masa_tunggu as $ms_tunggu)
+                            <option value="{{$ms_tunggu->id}}">{{$ms_tunggu->masa_tunggu}}</option>
+                            @endforeach
+                        </select>
+                        <x-jet-input-error for="masa_tunggu_id"></x-jet-input-error>
                     </div>
                 </div>
                 <div class="w-full my-2 py-1">

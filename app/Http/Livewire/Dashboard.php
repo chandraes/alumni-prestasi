@@ -16,9 +16,9 @@ class Dashboard extends Component
     {
         $this->prestasi = MahasiswaPrestasi::count();
         $this->alumnis = Alumni::count();
-        $alumni = Alumni::groupBy('angkatan')->select('angkatan', DB::raw('count(*) as total, sum(status = 1) as bekerja'))->get();
+        $alumni = Alumni::groupBy('angkatan')->select('angkatan', DB::raw('count(*) as total, sum(status_id = 1) as bekerja'))->get();
         $alumniJurusan = Alumni::join('jurusan_prodis', 'alumnis.jurusan_prodi_id', 'jurusan_prodis.id')
-                                ->select(DB::raw('concat(nama_jurusan_prodi, " (", jenjang, ")") as prodi'), DB::raw('count(*) as totalAlumni, sum(status = 1) as bekerja'))
+                                ->select(DB::raw('concat(nama_jurusan_prodi, " (", jenjang, ")") as prodi'), DB::raw('count(*) as totalAlumni, sum(status_id = 1) as bekerja'))
                                 ->groupBy('prodi')->get();
 
         foreach ($alumniJurusan as $prodi) {

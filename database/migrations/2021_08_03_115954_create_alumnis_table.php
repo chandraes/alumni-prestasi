@@ -15,6 +15,7 @@ class CreateAlumnisTable extends Migration
     {
         Schema::create('alumnis', function (Blueprint $table) {
             $table->id();
+            $table->boolean('verified')->default(0);
             $table->string('nama');
             $table->text('alamat');
             $table->string('no_hp');
@@ -24,7 +25,7 @@ class CreateAlumnisTable extends Migration
             $table->integer('tahun_wisuda');
             $table->string('no_ijazah');
             $table->decimal('ipk', 3, 2);
-            $table->tinyInteger('status');
+            $table->foreignId('status_id')->constrained('statuses');
             $table->string('tempat_bekerja_pertama')->nullable();
             $table->foreignId('penghasilan_pertama_id')->nullable()->constrained('penghasilan');
             $table->string('tempat_bekerja_sekarang')->nullable();
@@ -32,6 +33,7 @@ class CreateAlumnisTable extends Migration
             $table->text('alamat_kantor')->nullable();
             $table->text('website_kantor')->nullable();
             $table->date('tanggal_masuk_kerja')->nullable();
+            $table->foreignId('masa_tunggu_id')->nullable()->constrained('masa_tunggu_kerja');
             $table->tinyInteger('kesesuaian_bidang')->nullable();
             $table->timestamps();
         });
