@@ -49,6 +49,11 @@
             <li class="{{ Request::routeIs('alumni-data') ? 'active' : '' }}">
                 <a href="/alumni/data" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Daftar Alumni</span></a>
             </li>
+            @can("admin")
+                <li class="{{ Request::routeIs('alumni-verifikasi') ? 'active' : '' }}">
+                    <a href="{{route('alumni-verifikasi')}}" class="nav-link"><i class="fas fa-graduation-cap"></i><span>Verifikasi Alumni</span></a>
+                </li>
+            @endcan
         </ul>
 
         @can("admin")

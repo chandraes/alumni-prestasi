@@ -5,7 +5,9 @@ use App\Http\Controllers\ListPrestasi;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Alumni;
 use App\Http\Livewire\AlumniTambah;
+use App\Http\Livewire\AlumniVerifikasi;
 use App\Http\Livewire\AlumniNotif;
+use App\Http\Livewire\AlumniDetail;
 use App\Http\Livewire\Dashboard;
 use App\Http\Livewire\JurusanProdiData;
 use App\Http\Livewire\KegiatanData;
@@ -45,6 +47,8 @@ Route::group([ "middleware" => ['auth:sanctum', 'verified'] ], function() {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/alumni/data', Alumni::class)->name('alumni-data');
 
+    Route::get('/alumni/verifikasi/{id}', AlumniDetail::class)->name('alumni-detail');
+
     Route::prefix('mahasiswa-prestasi')->group(function() {
         Route::get('/input', MahasiswaBerprestasi::class)->name('mahasiswa-prestasi');
         Route::get('/list', ListMahasiswaPrestasi::class)->name('list-mahasiswa-prestasi');
@@ -52,8 +56,8 @@ Route::group([ "middleware" => ['auth:sanctum', 'verified'] ], function() {
         // Route::get('/verifikasi', VerifikasiMahasiswaPrestasi::class)->name('verifikasi-mahasiswa-prestasi');
         Route::get('/export', ExportMahasiswaPrestasi::class)->name('export-mahasiswa-prestasi')->middleware('admin');
     });
-    
-    
+
+
     Route::group(['middleware' => ['admin']], function () {
         Route::get('/master/jurusan-prodi', JurusanProdiData::class)->name('jurusan-prodi');
         Route::get('/master/jurusan-prodi/tambah', TambahJurusanProdi::class)->name('tambah-jurusan-prodi');
@@ -65,12 +69,13 @@ Route::group([ "middleware" => ['auth:sanctum', 'verified'] ], function() {
 
         Route::get('/user-data', UserData::class)->name('user-data');
         Route::get('/user-data/tambah', UserTambah::class)->name('tambah-user');
-  
+
+        Route::get('/alumni/verifikasi', AlumniVerifikasi::class)->name('alumni-verifikasi');
     });
-    
-    
-    
-   
+
+
+
+
 
     // Route::get('/list-mahasiswa', '\App\Http\Controllers\ListPrestasi@index')->name('list-mahasiswa');
 

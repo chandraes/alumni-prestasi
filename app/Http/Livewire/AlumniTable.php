@@ -15,13 +15,16 @@ class AlumniTable extends LivewireDatatable
     public $hideable = 'select';
     public $exportable = true;
 
-    public function builder()
-    {
-        return Alumni::with('jurusan', 'penghasilan', 'status');
-    }
+    // public function builder()
+    // {
+    //     return Alumni::with('jurusan', 'penghasilan', 'status');
+    // }
     public function columns()
     {
         return [
+            Column::callback('id', function($id){
+                return view('livewire.datatables.delete', ['value' =>$id]);
+            })->label('Act')->alignCenter()->excludeFromExport(),
             BooleanColumn::name('verified')->filterable()->alignCenter(),
             Column::name('nama')->searchable(),
             Column::name('no_hp')->label('No HP'),
@@ -48,9 +51,7 @@ class AlumniTable extends LivewireDatatable
             Column::name('alamat_kantor'),
             Column::name('website_kantor'),
             Column::name('posisi_bagian')->label('Posisi / Bagian'),
-            Column::callback('id', function($id){
-                return view('livewire.datatables.delete', ['value' =>$id]);
-            })->label('Action')->alignCenter()->excludeFromExport(),
+            Column::name('masa_tunggu.masa_tunggu')->label('Masa Tunggu Kerja'),
         ];
     }
 
