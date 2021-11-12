@@ -225,6 +225,16 @@
                         <x-jet-input-error for="masa_tunggu_id"></x-jet-input-error>
                     </div>
                 </div>
+                <div class="w-full my-2 pb-1">
+                    <div class="relative">
+                        <x-jet-label value="{{__('Tanggal Masuk Kerja')}}"></x-jet-label>
+                        <input wire:model="tanggal_masuk_kerja"
+                            type="date" name="tanggal_masuk_kerja" :value="old('tanggal_masuk_kerja')"
+                            id="tempat_bekerja_sekarang"
+                            class="@error('tanggal_masuk_kerja') border-red-600 @enderror h-12 px-2 w-full border-2 rounded focus:outline-none focus:border-purple-600"></input>
+                        <x-jet-input-error for="tanggal_masuk_kerja"></x-jet-input-error>
+                    </div>
+                </div>
                 <div class="w-full my-2 py-1">
                     <div class="relative">
                         <x-jet-label value="{{__('Survey Kesesuaian Bidang Pekerjaan')}}"></x-jet-label>

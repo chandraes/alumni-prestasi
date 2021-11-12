@@ -14,7 +14,7 @@ class AlumniTambah extends Component
             $penghasilan_pertama_id, $tempat_bekerja_sekarang, $posisi_bagian, $status_id, $no_hp, $alamat, $no_ijazah, $alamat_kantor, $website_kantor;
     public $selectedStatus= null;
     public $captcha = 0;
-    public $kesesuaian_bidang, $ipk, $masa_tunggu_id, $masa_tunggu;
+    public $kesesuaian_bidang, $ipk, $masa_tunggu_id, $masa_tunggu, $tanggal_masuk_kerja;
 
     protected $rules = [
         'nama' => 'required|string',
@@ -33,6 +33,7 @@ class AlumniTambah extends Component
         'posisi_bagian' => 'requiredIf:status,1',
         'alamat_kantor' => 'requiredIf:status,1',
         'website_kantor' => 'requiredIf:status,1',
+        'tanggal_masuk_kerja' => 'requiredIf:status,1',
         'masa_tunggu_id' => 'requiredIf:status,1',
         'kesesuaian_bidang' => 'requiredIf:status,1',
     ];

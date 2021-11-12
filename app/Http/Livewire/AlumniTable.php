@@ -7,6 +7,8 @@ use Mediconesystems\LivewireDatatables\Column;
 use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
 use Mediconesystems\LivewireDatatables\NumberColumn;
 use Mediconesystems\LivewireDatatables\BooleanColumn;
+use Mediconesystems\LivewireDatatables\DateColumn;
+use Illuminate\Support\Facades\Gate;
 
 
 class AlumniTable extends LivewireDatatable
@@ -48,6 +50,7 @@ class AlumniTable extends LivewireDatatable
             Column::name('tempat_bekerja_pertama'),
             Column::name('penghasilan.nama_penghasilan')->label('Gaji Pertama'),
             Column::name('tempat_bekerja_sekarang'),
+            DateColumn::name('tanggal_masuk_kerja'),
             Column::name('alamat_kantor'),
             Column::name('website_kantor'),
             Column::name('posisi_bagian')->label('Posisi / Bagian'),
@@ -56,7 +59,7 @@ class AlumniTable extends LivewireDatatable
     }
 
     public function delete($id){
-
+        Gate::authorize('admin');
         Alumni::find($id)->delete();
         session()->flash('message', 'Data Has Been Deleted..');
         return redirect()->to('/alumni/data');
