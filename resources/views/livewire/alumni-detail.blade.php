@@ -122,7 +122,8 @@
                     @endforeach
                 </tbody>
             </table>
-            <button class="btn btn-success" wire:click.prevent="verifikasi">Verifikasi</button>
+            <button class="btn btn-success w-1/3" wire:click.prevent="verifikasi">Verifikasi</button>
+
 
         </div>
     </div>

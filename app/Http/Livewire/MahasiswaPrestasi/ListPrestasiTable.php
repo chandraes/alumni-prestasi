@@ -14,12 +14,12 @@ use File;
 
 class ListPrestasiTable extends LivewireDatatable
 {
-    
+
     public $hideable = 'select';
-        
+
     public function builder()
     {
-        return MahasiswaPrestasi::with('jurusan', 'kegiatan', 'tingkat_prestasi', 'jenis_prestasi');            
+        return MahasiswaPrestasi::with('jurusan', 'kegiatan', 'tingkat_prestasi', 'jenis_prestasi');
     }
 
     public function columns()
@@ -37,13 +37,14 @@ class ListPrestasiTable extends LivewireDatatable
                 return $full;
             })->label('Jurusan / Prodi')->filterable(),
             Column::name('kegiatan.nama_kegiatan')->label('Kegiatan')->filterable()->searchable(),
+            DateColumn::name('waktu')->label('Waktu Kegiatan')->filterable()->alignCenter(),
             Column::callback(['nim', 'id'], function ($nim, $id) {
-                
+
                 return view('livewire.datatables.modal', ['key' => $id, 'dm' => MahasiswaPrestasi::with('jurusan', 'kegiatan', 'tingkat_prestasi', 'jenis_prestasi')->find($id)]);
             })->alignCenter(),
         ];
 
-      
+
     }
 
     public function delete($id)
@@ -53,7 +54,7 @@ class ListPrestasiTable extends LivewireDatatable
         $surat_tugas = $db->value('surat_tugas_path');
         $undangan = $db->value('undangan_path');
         $sertifikat = $db->value('sertifikat_path');
-        
+
         $dir=MahasiswaPrestasi::find($id);
 
         if(File::exists(public_path('storage/files/'.$dir->nim))){
@@ -67,12 +68,12 @@ class ListPrestasiTable extends LivewireDatatable
             if (empty($file_check)) {
                 File::deleteDirectory(public_path('storage/files/'.$dir->nim));
             }
-            
+
         }
         else{
             session()->flash('message', 'Data Has Been Deleted..');
         }
-       
+
         MahasiswaPrestasi::find($id)->delete();
         session()->flash('message', 'Data Has Been Deleted..');
         return redirect()->to('/mahasiswa-prestasi/list');

@@ -32,7 +32,7 @@
                         class="text-3xl text-gray-900">{{$prestasi}}</span>
                 </div>
             </div>
-           
+
         </div>
     </div>
 </div>
@@ -78,7 +78,7 @@
         var r = Math.floor(Math.random() * 255);
         var g = Math.floor(Math.random() * 255);
         var b = Math.floor(Math.random() * 255);
-        var Color = "rgba(" + r + "," + g + "," + b + ",1" + ")";
+        var Color = "rgba(" + r + "," + g + "," + b + ",4" + ")";
         var labels = <?php echo $lblAngkatan; ?>;
         var data = <?php echo $jmlAngkatan; ?>;
         var data2 = <?php echo $sdhBkj; ?>;
@@ -136,6 +136,7 @@
         var labeljurusan = <?php echo $lblJurusan; ?>;
         var dataJurusan = <?php echo $jmlJurusan; ?>;
         var databekerja = <?php echo $bkj; ?>;
+        var dataLjttKul = <?php echo $ljtKul; ?>;
 
         var ctx = document.getElementById('chartJurusan').getContext('2d');
         var myChart = new Chart(ctx, {
@@ -162,6 +163,18 @@
                             'rgba(0,0,0,1)',
                         ],
                         order: 1
+                    },
+                    {
+                        type: 'line',
+                        label: "Lanjut Kuliah",
+                        data: dataLjttKul,
+                        backgroundColor: [
+                            'rgba(123,12,0,1)',
+                        ],
+                        borderColor: [
+                            'rgba(123,12,0,1)',
+                        ],
+                        order: 3
                     }
                 ]
             },

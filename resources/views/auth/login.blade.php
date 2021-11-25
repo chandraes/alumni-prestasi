@@ -7,7 +7,7 @@
                 <div class="w-full shadow-2xl h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg" style="background-image: url('/images/ft.jpg')"></div>
                 <!-- Col -->
                 <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none border-gray-800">
-                    <h3 class="pt-4 text-2xl text-center"><strong>Fakultas Teknik UNSRI</strong></h3>
+                    <h3 class="pt-4 text-2xl text-center"><strong>SIMAPRES FT UNSRI</strong></h3>
                     <form method="POST" action="{{ route('login') }}" class="px-8 pt-6 pb-8 mb-4 bg-white rounded ">
                         @csrf
                     
